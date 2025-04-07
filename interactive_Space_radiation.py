@@ -175,7 +175,7 @@ def compute_time_in_van_allen():
 
     return time_inner, time_outer
 
-def compute_fluence_van_allen():
+def compute_fluence_van_allen(year):
     """
     Compute fluence inside Van Allen Belts
 
@@ -206,7 +206,7 @@ def compute_fluence_van_allen():
     
     # Fluence = rho * v
     fluence_inner = rho_inner * v_inner  # particles/cm²/s
-    fluence_outer = rho_outter * v_outer  # particles/cm²/s
+    fluence_outer = rho_outter * v_outer # particles/cm²/s
 
     return fluence_inner, fluence_outer
 
@@ -588,7 +588,7 @@ def coefficient_shielding_tid():
     
     thickness = param_sliders["Shielding thickness"]["slider"].get()/10. # get value in mm
     d = thickness / 1000. # convert into meters
-    attenuation_factor = np.exp(-mu_rho * rho * d**0.5) # empirical from measurement shown in ref 3Page25.pdf (put a better reference)
+    attenuation_factor = np.exp(-mu_rho * rho * d**0.5) # empirical from measurement shown in ref Introduction_To_Radiation_Shielding.pdf
     return attenuation_factor
 
 
@@ -1261,7 +1261,7 @@ label_SatShieldingcost_frame.pack(fill=tk.X)
 label_SatShieldingcost = tk.Label(label_SatShieldingcost_frame, text=f"Shielding Cost: $0", font=("Arial", 16), fg="black")
 label_SatShieldingcost.pack(side=tk.LEFT)
 # -
-
+#
 
 
 separator = ttk.Separator(protection_frame, orient="horizontal")
